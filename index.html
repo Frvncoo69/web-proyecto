@@ -3,33 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tecnostore</title>
+    <title>Tecnostore</title>
+    <link rel="stylesheet" href="assets/styles.css">
     <style>
-        body {
-            background-image: url('assets/img/home.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        footer {
-            text-align: center; /* Centra el contenido del footer */
-            padding: 20px;
-            background-color: #333; /* Fondo oscuro para el footer */
-        }
-        footer img {
-            width: 150px; /* Ajusta el tamaño de la imagen */
-            height: auto;
-        }
+        /* Aquí va el CSS que te proporcioné, lo pondré a continuación */
     </style>
-    <link rel="stylesheet" href="/assets/styles.css">
 </head>
-<body style="background-image: url('assets/img/home.jpg');">
-    <h1>TECNOSTORE</h1>
-    <h2>¿En que consiste?</h2>
-    <h3>Tecnostore es una aplicación móvil que tiene como principal función la venta de productos tecnologicos, y para lograr todo lo que esto conlleva, hemos implementado un sistema que permitira: visualizar, agregar, y modificar productos, como el administrador estime necesario, mientras que el cliente solo podra visualizar y comprar los articulos. </h3>
-    <p></p>
-    <footer><img src="assets/img/logo.jpeg" alt="logo" width="200px" height="200px"></footer>
+<body>
+    <header>
+        <h1>TECNOSTORE</h1>
+    </header>
 
+    <main>
+        <h2>¿En qué consiste?</h2>
+        <h3>
+            Tecnostore es una aplicación móvil que tiene como principal función la venta de productos tecnológicos. 
+            Para lograr todo lo que esto conlleva, hemos implementado un sistema que permitirá: visualizar, agregar y modificar productos según lo estime el administrador, 
+            mientras que el cliente podrá únicamente visualizar y comprar los artículos.
+        </h3>
+
+        <button class="action-btn">Explorar Productos</button>
+
+        <!-- Carrusel de imágenes -->
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="assets/img/teclado5.jpg" alt="Teclado">
+                <img src="assets/img/mouse1.jpg" alt="Mouse">
+                <img src="assets/img/silla2.jpg" alt="Silla">
+                <img src="assets/img/pc1.jpg" alt="PC">
+                <img src="assets/img/audifono1.jpg" alt="Audífono">
+            </div>
+            <div class="carousel-buttons">
+                <button class="prev-btn">&#10094;</button>
+                <button class="next-btn">&#10095;</button>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <img src="assets/img/logo.jpeg" alt="Logo Tecnostore">
+        <p>&copy; 2024 Tecnostore. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-images img');
+        const totalImages = images.length;
+    
+        // Función para mover el carrusel hacia la izquierda
+        function moveLeft() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = totalImages - 1; // Al llegar al principio, va al final
+            }
+            updateCarousel();
+        }
+    
+        // Función para mover el carrusel hacia la derecha
+        function moveRight() {
+            currentIndex++;
+            if (currentIndex >= totalImages) {
+                currentIndex = 0; // Al llegar al final, va al principio
+            }
+            updateCarousel();
+        }
+    
+        // Actualiza la posición del carrusel
+        function updateCarousel() {
+            const newTransformValue = -currentIndex * (images[0].clientWidth + 20); // 20 es el margen entre las imágenes
+            document.querySelector('.carousel-images').style.transform = `translateX(${newTransformValue}px)`;
+        }
+    
+        // Asignar eventos a las flechas
+        document.querySelector('.prev-btn').addEventListener('click', moveLeft);
+        document.querySelector('.next-btn').addEventListener('click', moveRight);
+    </script>
+    
+    
 </body>
-
 </html>
